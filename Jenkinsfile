@@ -5,6 +5,7 @@ pipeline {
             agent {
                 docker {
                     image 'python:2-alpine'
+                    reuseNode true
                 }
             }
             steps {
@@ -15,6 +16,7 @@ pipeline {
             agent {
                 docker {
                     image 'qnib/pytest'
+                    reuseNode true
                 }
             }
             steps {
@@ -30,6 +32,8 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
+                    args '--entrypoint=""'
+//                     reuseNode true
                 }
             }
             steps {
