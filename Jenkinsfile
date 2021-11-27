@@ -30,11 +30,12 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
-                    args '-v $(pwd)/sources:/src'
+                    args '-v jenkins-data:/src'
                 }
             }
             steps {
-                sh 'pyinstaller -F add2vals.py'
+                sh 'pwd && ls'
+                sh 'pyinstaller -F sources/add2vals.py'
             }
             post {
                 success {
