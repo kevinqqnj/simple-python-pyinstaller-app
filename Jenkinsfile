@@ -1,16 +1,16 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
-            agent {
-                docker {
-                    image 'python:2-alpine'
-                }
-            }
-            steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-            }
-        }
+//         stage('Build') {
+//             agent {
+//                 docker {
+//                     image 'python:2-alpine'
+//                 }
+//             }
+//             steps {
+//                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+//             }
+//         }
 //         stage('Test') {
 //             agent {
 //                 docker {
@@ -30,12 +30,11 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
-//                     args '-v jenkins-data:/src'
                 }
             }
             steps {
                 sh 'pwd && ls sources'
-                sh 'pip install pyinstaller'
+//                 sh 'pip install pyinstaller'
                 sh 'pyinstaller -F sources/add2vals.py'
             }
             post {
