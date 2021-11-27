@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh 'pwd && ls sources'
 //                 sh 'pip install pyinstaller'
-                sh 'pyinstaller -F sources/add2vals.py'
+                sh '/root/.pyenv/shims/pyinstaller -F sources/add2vals.py'
             }
             post {
                 success {
